@@ -36,9 +36,12 @@
   .btn{display:block;text-align:center;text-decoration:none;font-weight:800;font-size:14px;padding:10px 12px;border-radius:12px;min-width:132px}
   .btn1{background:linear-gradient(90deg,var(--violet),var(--orange));color:#fff}
   .btn2{border:1px solid var(--bord);color:var(--texte);background:#1a0f2e}
+  .btn3{border:1px solid var(--orange);color:#ffd2b3;background:#1a0f2e}
+  .btn3.off{border-color:var(--bord);color:var(--doux);opacity:.55;font-weight:600;cursor:default}
+  .pwa{font-size:12px;color:#ffd2b3;margin-top:4px}
   .maj{text-align:center;color:var(--doux);font-size:13px;margin:12px 0 0}
   footer{text-align:center;color:var(--doux);font-size:13px;margin-top:28px;line-height:1.5}
-  @media (max-width:480px){.jeu{flex-wrap:wrap}.boutons{flex-direction:row;width:100%}.btn{flex:1;min-width:0}}
+  @media (max-width:480px){.jeu{flex-wrap:wrap}.boutons{flex-direction:row;flex-wrap:wrap;width:100%}.btn{flex:1;min-width:0}.btn3{flex-basis:100%}}
 </style>
 </head>
 <body>
@@ -64,8 +67,9 @@
   <footer data-t="pied">Un souci ? Réponds simplement au mail que tu as reçu. Merci, tu nous aides énormément.</footer>
 </main>
 <script>
+  // [nom, paquet, icône, testeurs, 18+, site web DÉJÀ en ligne (PWA) ou rien]
   var JEUX = [
-    ['Casino Bylux', 'casinobylux', 'casino', 9, true],
+    ['Casino Bylux', 'casinobylux', 'casino', 9, true, 'https://casino.dragonnet.online/'],
     ['Last Bastion', 'dernierbastion', 'bastion', 8],
     ['Abyss Angler', 'pecheurabysses', 'abyss', 8],
     ['Évasion Idle', 'evasionidle', 'evasion', 5],
@@ -74,8 +78,8 @@
     ['Village Bazaar', 'villagebazaar', 'bazaar', 1]
   ];
   // À changer à chaque relevé de la Console (compteurs + date) ; V force le rechargement des icônes.
-  var MAJ = { j: '15/11', h: '15 h' };
-  var V = '20261115b';
+  var MAJ = { j: '15/11', h: '16 h' };
+  var V = '20261115c';
   var EN = {
     titre: 'Become a Bylux tester',
     sous: 'Play our games before anyone else and help them launch on Google Play.',
@@ -85,9 +89,13 @@
     c3: 'Tap <b>“Install”</b> and <b>keep the game for 14 days</b>, opening it a little from time to time.',
     pied: 'A problem? Just reply to the email you received. Thank you, you help us a lot.',
     btn1: 'Become a tester', btn2: 'Install', compte: ' / 12 testers', age: '18+',
+    btn3: 'Play on the web (iPhone / PC)', btn3off: 'Coming soon on the web',
+    pwa: 'iPhone: Safari → Share → “Add to Home Screen”.',
     maj: 'Counters updated on ' + MAJ.j + ' at ' + MAJ.h
   };
   var FR = { btn1: 'Devenir testeur', btn2: 'Installer', compte: ' / 12 testeurs', age: '18+',
+    btn3: 'Jouer sur le web (iPhone / PC)', btn3off: 'Bientôt sur le web',
+    pwa: 'iPhone : Safari → Partager → « Sur l’écran d’accueil ».',
     maj: 'Compteurs mis à jour le ' + MAJ.j + ' à ' + MAJ.h };
   var en = !/^fr/i.test((navigator.languages && navigator.languages[0]) || navigator.language || 'en');
   var L = en ? EN : FR;
@@ -105,10 +113,13 @@
       '<img src="icones/' + j[2] + '.webp?v=' + V + '" alt="" width="72" height="72" loading="lazy">' +
       '<div class="info"><p class="nom"></p>' +
       '<div class="barre"><span style="width:' + Math.min(100, Math.round(j[3] / 12 * 100)) + '%"></span></div>' +
-      '<div class="compte">' + j[3] + L.compte + (j[4] ? '<span class="age">' + L.age + '</span>' : '') + '</div></div>' +
+      '<div class="compte">' + j[3] + L.compte + (j[4] ? '<span class="age">' + L.age + '</span>' : '') + '</div>' +
+      (j[5] ? '<div class="pwa">' + L.pwa + '</div>' : '') + '</div>' +
       '<div class="boutons">' +
       '<a class="btn btn1" target="_blank" rel="noopener" href="https://play.google.com/apps/testing/' + pkg + '">' + L.btn1 + '</a>' +
       '<a class="btn btn2" target="_blank" rel="noopener" href="https://play.google.com/store/apps/details?id=' + pkg + '">' + L.btn2 + '</a>' +
+      (j[5] ? '<a class="btn btn3" target="_blank" rel="noopener" href="' + j[5] + '">' + L.btn3 + '</a>'
+            : '<span class="btn btn3 off" aria-disabled="true">' + L.btn3off + '</span>') +
       '</div>';
     d.querySelector('.nom').textContent = j[0];
     box.appendChild(d);
