@@ -67,9 +67,10 @@
   <footer data-t="pied">Un souci ? Réponds simplement au mail que tu as reçu. Merci, tu nous aides énormément.</footer>
 </main>
 <script>
-  // [nom, paquet, icône, testeurs, 18+, site web DÉJÀ en ligne (PWA) ou rien]
+  // [nom, paquet complet, icône, testeurs, âge mini ('' si tout public), site web DÉJÀ en ligne (PWA) ou rien]
   var JEUX = [
-    ['Casino Bylux', 'casinobylux', 'casino', 9, true, 'https://casino.dragonnet.online/'],
+    ['Lockdown: Extraction', 'com.byzirtox.lockdown', 'lockdown', 11, '16+', 'https://lockdown.dragonnet.online/'],
+    ['Casino Bylux', 'casinobylux', 'casino', 9, '18+', 'https://casino.dragonnet.online/'],
     ['Last Bastion', 'dernierbastion', 'bastion', 8],
     ['Abyss Angler', 'pecheurabysses', 'abyss', 8],
     ['Évasion Idle', 'evasionidle', 'evasion', 5],
@@ -78,8 +79,8 @@
     ['Village Bazaar', 'villagebazaar', 'bazaar', 1]
   ];
   // À changer à chaque relevé de la Console (compteurs + date) ; V force le rechargement des icônes.
-  var MAJ = { j: '15/11', h: '16 h' };
-  var V = '20261115c';
+  var MAJ = { j: '15/11', h: '16 h 15' };
+  var V = '20261115d';
   var EN = {
     titre: 'Become a Bylux tester',
     sous: 'Play our games before anyone else and help them launch on Google Play.',
@@ -106,14 +107,14 @@
   }
   var box = document.getElementById('jeux');
   JEUX.forEach(function (j) {
-    var pkg = 'com.krimolux.' + j[1];
+    var pkg = j[1].indexOf('.') > 0 ? j[1] : 'com.krimolux.' + j[1];
     var d = document.createElement('div');
     d.className = 'jeu';
     d.innerHTML =
       '<img src="icones/' + j[2] + '.webp?v=' + V + '" alt="" width="72" height="72" loading="lazy">' +
       '<div class="info"><p class="nom"></p>' +
       '<div class="barre"><span style="width:' + Math.min(100, Math.round(j[3] / 12 * 100)) + '%"></span></div>' +
-      '<div class="compte">' + j[3] + L.compte + (j[4] ? '<span class="age">' + L.age + '</span>' : '') + '</div>' +
+      '<div class="compte">' + j[3] + L.compte + (j[4] ? '<span class="age">' + j[4] + '</span>' : '') + '</div>' +
       (j[5] ? '<div class="pwa">' + L.pwa + '</div>' : '') + '</div>' +
       '<div class="boutons">' +
       '<a class="btn btn1" target="_blank" rel="noopener" href="https://play.google.com/apps/testing/' + pkg + '">' + L.btn1 + '</a>' +
