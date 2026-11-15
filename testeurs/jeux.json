@@ -1,5 +1,5 @@
 {
-  "maj": "2026-11-15T16:15",
+  "maj": "2026-11-15T16:30",
   "objectif": 12,
   "jeux": [
     {
@@ -12,7 +12,10 @@
       "age": "16+",
       "icone": "icones/lockdown.webp",
       "image": null,
-      "genre": { "fr": "Action · Extraction", "en": "Action · Extraction" },
+      "genre": {
+        "fr": "Action · Extraction",
+        "en": "Action · Extraction"
+      },
       "accroche": {
         "fr": "Bouclage total : fouille, survis et sors vivant avec le butin.",
         "en": "Total lockdown: scavenge, survive and get out alive with the loot."
@@ -28,7 +31,10 @@
       "age": "18+",
       "icone": "icones/casino.webp",
       "image": "images/casino-800.webp",
-      "genre": { "fr": "Casino social", "en": "Social casino" },
+      "genre": {
+        "fr": "Casino social",
+        "en": "Social casino"
+      },
       "accroche": {
         "fr": "Des machines à sous dans des mondes féeriques, du palais au temple.",
         "en": "Slot machines across fairy-tale worlds, from palace to temple."
@@ -39,12 +45,15 @@
       "paquet": "com.krimolux.dernierbastion",
       "inscription": "https://play.google.com/apps/testing/com.krimolux.dernierbastion",
       "play": "https://play.google.com/store/apps/details?id=com.krimolux.dernierbastion",
-      "web": null,
+      "web": "https://bastion.dragonnet.online/",
       "testeurs": 8,
       "age": null,
       "icone": "icones/bastion.webp",
       "image": "images/bastion-800.webp",
-      "genre": { "fr": "Tower defense", "en": "Tower defense" },
+      "genre": {
+        "fr": "Tower defense",
+        "en": "Tower defense"
+      },
       "accroche": {
         "fr": "Construis tes tours, fais-les évoluer et tiens bon face aux boss.",
         "en": "Build towers, upgrade them and hold the line against the bosses."
@@ -55,12 +64,15 @@
       "paquet": "com.krimolux.pecheurabysses",
       "inscription": "https://play.google.com/apps/testing/com.krimolux.pecheurabysses",
       "play": "https://play.google.com/store/apps/details?id=com.krimolux.pecheurabysses",
-      "web": null,
+      "web": "https://abyss.dragonnet.online/",
       "testeurs": 8,
       "age": null,
       "icone": "icones/abyss.webp",
       "image": "images/abyss-800.webp",
-      "genre": { "fr": "Pêche idle", "en": "Idle fishing" },
+      "genre": {
+        "fr": "Pêche idle",
+        "en": "Idle fishing"
+      },
       "accroche": {
         "fr": "Lance ta ligne et plonge toujours plus profond dans les abysses.",
         "en": "Cast your line and dive ever deeper into the abyss."
@@ -71,12 +83,15 @@
       "paquet": "com.krimolux.evasionidle",
       "inscription": "https://play.google.com/apps/testing/com.krimolux.evasionidle",
       "play": "https://play.google.com/store/apps/details?id=com.krimolux.evasionidle",
-      "web": null,
+      "web": "https://evasion.dragonnet.online/",
       "testeurs": 5,
       "age": null,
       "icone": "icones/evasion.webp",
       "image": "images/evasion-800.webp",
-      "genre": { "fr": "Idle · Évasion", "en": "Idle · Prison break" },
+      "genre": {
+        "fr": "Idle · Évasion",
+        "en": "Idle · Prison break"
+      },
       "accroche": {
         "fr": "Creuse, trime et prépare la grande évasion, un clic à la fois.",
         "en": "Dig, grind and plan the great escape, one tap at a time."
@@ -87,12 +102,15 @@
       "paquet": "com.krimolux.mokaminou",
       "inscription": "https://play.google.com/apps/testing/com.krimolux.mokaminou",
       "play": "https://play.google.com/store/apps/details?id=com.krimolux.mokaminou",
-      "web": null,
+      "web": "https://moka.dragonnet.online/",
       "testeurs": 3,
       "age": null,
       "icone": "icones/moka.webp",
       "image": "images/moka-800.webp",
-      "genre": { "fr": "Café de chats cosy", "en": "Cozy cat café" },
+      "genre": {
+        "fr": "Café de chats cosy",
+        "en": "Cozy cat café"
+      },
       "accroche": {
         "fr": "Tiens un café douillet rempli de chats adorables.",
         "en": "Run a cozy café full of adorable cats."
@@ -103,12 +121,15 @@
       "paquet": "com.krimolux.gunlight",
       "inscription": "https://play.google.com/apps/testing/com.krimolux.gunlight",
       "play": "https://play.google.com/store/apps/details?id=com.krimolux.gunlight",
-      "web": null,
+      "web": "https://gunlight.dragonnet.online/",
       "testeurs": 2,
       "age": null,
       "icone": "icones/gunlight.webp",
       "image": "images/gunlight-800.webp",
-      "genre": { "fr": "Action tactique", "en": "Tactical action" },
+      "genre": {
+        "fr": "Action tactique",
+        "en": "Tactical action"
+      },
       "accroche": {
         "fr": "Ton escouade avance de nuit, lampes allumées, dans les ruines.",
         "en": "Your squad pushes through the ruins at night, flashlights on."
@@ -119,12 +140,15 @@
       "paquet": "com.krimolux.villagebazaar",
       "inscription": "https://play.google.com/apps/testing/com.krimolux.villagebazaar",
       "play": "https://play.google.com/store/apps/details?id=com.krimolux.villagebazaar",
-      "web": null,
+      "web": "https://bazaar.dragonnet.online/",
       "testeurs": 1,
       "age": null,
       "icone": "icones/bazaar.webp",
       "image": "images/bazaar-800.webp",
-      "genre": { "fr": "Gestion de village", "en": "Village builder" },
+      "genre": {
+        "fr": "Gestion de village",
+        "en": "Village builder"
+      },
       "accroche": {
         "fr": "Construis ton village et fais grandir ton bazar.",
         "en": "Build your village and grow your bazaar."
