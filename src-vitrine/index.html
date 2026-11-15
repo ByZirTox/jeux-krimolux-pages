@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bylux Studio · Deviens testeur</title>
+<meta name="description" content="Joue aux jeux mobiles de Bylux Studio avant tout le monde : rejoins le test fermé sur Google Play.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0a0518">
+<meta name="color-scheme" content="dark">
+<meta http-equiv="Cache-Control" content="no-cache">
+<link rel="icon" type="image/webp" href="images/logo-bylux-96.webp">
+<link rel="preload" href="images/logo-bylux-96.webp" as="image">
+<script>
+  // Langue avant le premier rendu (évite le clignotement FR → EN).
+  (function () {
+    var l = null;
+    try { l = new URLSearchParams(location.search).get('lang') || localStorage.getItem('bylux-lang'); } catch (e) {}
+    if (l !== 'fr' && l !== 'en') l = /^fr/i.test((navigator.languages && navigator.languages[0]) || navigator.language || '') ? 'fr' : 'en';
+    document.documentElement.lang = l;
+    document.documentElement.className = 'js';
+    // Les données partent tout de suite (no-cache : toujours revalidées, compteurs à jour sans rebuild).
+    window.__jeux = fetch('jeux.json', { cache: 'no-cache' }).then(function (r) { if (!r.ok) throw r.status; return r.json(); });
+    window.__jeux.catch(function () {});
+  })();
+</script>
+<link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+<a class="saut" href="#jeux" data-t="saut">Aller aux jeux</a>
+
+<header class="barre-haut">
+  <div class="enveloppe barre-haut__in">
+    <a class="marque" href="#haut">
+      <img src="images/logo-bylux-96.webp" alt="" width="40" height="40">
+      <span class="marque__nom">BYLUX <span>STUDIO</span></span>
+    </a>
+    <button class="langue" id="langue" type="button" ><span class="vh">Switch to English: </span>EN</button>
+  </div>
+</header>
+
+<main id="haut">
+  <section class="hero">
+    <div class="hero__grille" aria-hidden="true"></div>
+    <div class="enveloppe hero__in">
+      <p class="pastille"><span class="point" aria-hidden="true"></span><span data-t="pastille">Test fermé · Google Play</span></p>
+      <h1><span data-t="h1a">Joue à nos jeux</span> <span class="neon" data-t="h1b">avant tout le monde</span></h1>
+      <p class="hero__sous" data-t="sous">Rejoins les testeurs Bylux : tu découvres nos jeux mobiles en avant-première et tu nous aides à les sortir sur Google Play.</p>
+      <a class="btn btn--principal btn--hero" href="#jeux"><span data-t="cta">Voir les jeux</span> <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24"><path d="M12 4v14m0 0-6-6m6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <ul class="chiffres">
+        <li><b id="nb-jeux">8</b><span data-t="ch1">jeux en test</span></li>
+        <li><b>12</b><span data-t="ch2">testeurs par jeu</span></li>
+        <li><b>14</b><span data-t="ch3">jours de test</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="enveloppe etapes" aria-labelledby="t-etapes">
+    <h2 id="t-etapes" class="titre-section" data-t="etapesT">3 étapes, pour chaque jeu</h2>
+    <ol class="etapes__liste">
+      <li class="etape">
+        <div class="picto picto--1" aria-hidden="true">
+          <svg viewBox="0 0 64 64"><rect x="18" y="6" width="28" height="52" rx="6" class="trait"/><circle cx="32" cy="27" r="7" class="trait accent"/><path d="M22 46c2-6 6-8 10-8s8 2 10 8" class="trait accent"/><circle cx="32" cy="52" r="1.8" class="plein"/></svg>
+        </div>
+        <span class="etape__num">1</span>
+        <h3 data-t="e1t">Le bon compte</h3>
+        <p data-t="e1">Ouvre cette page <b>sur ton Android</b>, connecté au <b>compte Google de l’adresse que tu nous as donnée</b>.</p>
+      </li>
+      <li class="etape">
+        <div class="picto picto--2" aria-hidden="true">
+          <svg viewBox="0 0 64 64"><rect x="8" y="16" width="48" height="20" rx="10" class="trait"/><path d="M24 26h16" class="trait accent"/><path d="M36 58V40.5a3.5 3.5 0 0 1 7 0V47l7 1.5a4 4 0 0 1 3 4.6L52 58" class="trait main"/><circle cx="39.5" cy="34" r="6" class="onde"/></svg>
+        </div>
+        <span class="etape__num">2</span>
+        <h3 data-t="e2t">Deviens testeur</h3>
+        <p data-t="e2">Touche <b>« Devenir testeur »</b> sur la carte du jeu, puis confirme sur la page Google.</p>
+      </li>
+      <li class="etape">
+        <div class="picto picto--3" aria-hidden="true">
+          <svg viewBox="0 0 64 64"><rect x="8" y="12" width="48" height="44" rx="8" class="trait"/><path d="M8 24h48M20 6v10M44 6v10" class="trait"/><path d="M32 30v16m0 0-6-6m6 6 6-6" class="trait accent fleche"/></svg>
+        </div>
+        <span class="etape__num">3</span>
+        <h3 data-t="e3t">Installe et garde-le</h3>
+        <p data-t="e3">Touche <b>« Installer »</b> et <b>garde le jeu 14 jours</b>, en l’ouvrant un peu de temps en temps.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="enveloppe" id="jeux" aria-labelledby="t-jeux" tabindex="-1">
+    <h2 id="t-jeux" class="titre-section" data-t="jeuxT">Nos jeux en test</h2>
+    <p class="maj" id="maj" aria-live="polite"></p>
+    <div class="cartes" id="cartes" aria-busy="true">
+      <div class="carte carte--fantome" aria-hidden="true"></div>
+      <div class="carte carte--fantome" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <section class="enveloppe faq" aria-labelledby="t-faq">
+    <h2 id="t-faq" class="titre-section" data-t="faqT">Questions fréquentes</h2>
+    <details>
+      <summary data-t="q1">Je ne suis pas encore testeur, je peux participer ?</summary>
+      <p data-t="r1">Oui ! Le test est fermé : seule une adresse Gmail de notre liste peut s’inscrire. Envoie ton adresse Gmail à la personne qui t’a partagé cette page ; dès qu’elle est ajoutée, reviens ici et suis les 3 étapes. En attendant, les jeux avec un bouton « Jouer sur le web » sont ouverts à tous.</p>
+    </details>
+    <details>
+      <summary data-t="q2">J’ai un iPhone, comment je fais ?</summary>
+      <p data-t="r2">Le test Google Play ne marche que sur Android. Sur iPhone (ou PC), touche « Jouer sur le web » quand le bouton est actif. Astuce : dans Safari, Partager → « Sur l’écran d’accueil » pour l’avoir comme une vraie appli.</p>
+    </details>
+    <details>
+      <summary data-t="q3">Pourquoi garder le jeu 14 jours ?</summary>
+      <p data-t="r3">Google demande au moins 12 testeurs qui gardent le jeu installé 14 jours d’affilée avant de nous laisser le publier. Pas besoin d’y jouer des heures : ouvre-le un peu de temps en temps, et surtout ne le désinstalle pas.</p>
+    </details>
+    <details>
+      <summary data-t="q4">La page Google dit que je ne peux pas m’inscrire ?</summary>
+      <p data-t="r4">C’est presque toujours le mauvais compte Google. Sur la page Google Play, touche ta photo en haut à droite et choisis le compte de l’adresse que tu nous as donnée, puis réessaie.</p>
+    </details>
+  </section>
+</main>
+
+<footer class="pied">
+  <div class="enveloppe pied__in">
+    <img src="images/logo-bylux-96.webp" alt="" width="56" height="56" loading="lazy">
+    <p class="pied__merci" data-t="pied1">Merci, tu nous aides énormément.</p>
+    <p data-t="pied2">Un souci ? Réponds simplement au mail que tu as reçu.</p>
+    <p><a href="../" data-t="pied3">Confidentialité de nos jeux</a></p>
+    <p class="pied__copy">© 2026 Bylux Studio</p>
+  </div>
+</footer>
+
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>
