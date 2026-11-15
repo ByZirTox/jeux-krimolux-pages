@@ -1,7 +1,7 @@
 {
   "maj": "2026-11-15T18:00",
   "objectif": 12,
-  "groupe": "",
+  "groupe": "https://groups.google.com/g/bylux-testeurs",
   "production": [
     {
       "nom": "Dragonnet",
@@ -9,7 +9,7 @@
       "play": "https://play.google.com/store/apps/details?id=com.krimolux.dragonnet",
       "web": "https://dragonnet.online/",
       "age": null,
-      "icone": null,
+      "icone": "icones/dragonnet.webp",
       "image": null,
       "genre": {
         "en": "Survival",
