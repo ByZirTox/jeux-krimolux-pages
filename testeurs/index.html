@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Devenir testeur Bylux</title>
+<meta name="description" content="Teste nos jeux avant tout le monde sur Google Play.">
+<meta name="robots" content="noindex">
+<style>
+  :root{--fond:#140b24;--carte:#21143a;--bord:#3a2566;--texte:#f4eefe;--doux:#b9a9d9;--violet:#8b5cf6;--orange:#ff8a3d;--vert:#34d399}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:radial-gradient(circle at 20% 0%,#2b1650 0,var(--fond) 55%);color:var(--texte);min-height:100vh}
+  main{max-width:720px;margin:0 auto;padding:28px 16px 48px}
+  header{text-align:center;margin-bottom:22px}
+  .logo{font-weight:900;letter-spacing:.18em;font-size:14px;background:linear-gradient(90deg,var(--violet),var(--orange));-webkit-background-clip:text;background-clip:text;color:transparent}
+  h1{font-size:clamp(26px,7vw,38px);margin:8px 0 6px}
+  .sous{color:var(--doux);margin:0;font-size:16px}
+  .consignes{background:linear-gradient(135deg,rgba(139,92,246,.25),rgba(255,138,61,.18));border:2px solid var(--orange);border-radius:18px;padding:16px 18px;margin:20px 0 26px}
+  .consignes h2{margin:0 0 10px;font-size:19px}
+  .consignes ol{margin:0;padding-left:22px;font-size:16px;line-height:1.5}
+  .consignes li{margin:6px 0}
+  .consignes b{color:#ffd2b3}
+  .jeux{display:grid;gap:14px}
+  .jeu{display:flex;gap:14px;align-items:center;background:var(--carte);border:1px solid var(--bord);border-radius:18px;padding:14px}
+  .jeu img{width:72px;height:72px;border-radius:16px;flex:none;background:#000}
+  .info{flex:1;min-width:0}
+  .nom{font-weight:800;font-size:17px;margin:0 0 4px}
+  .barre{height:8px;background:#0e0718;border-radius:9px;overflow:hidden;margin:6px 0 4px}
+  .barre span{display:block;height:100%;background:linear-gradient(90deg,var(--violet),var(--orange))}
+  .compte{font-size:13px;color:var(--doux)}
+  .age{font-size:12px;color:#ffb4b4;margin-left:6px}
+  .boutons{display:flex;flex-direction:column;gap:8px;flex:none}
+  .btn{display:block;text-align:center;text-decoration:none;font-weight:800;font-size:14px;padding:10px 12px;border-radius:12px;min-width:132px}
+  .btn1{background:linear-gradient(90deg,var(--violet),var(--orange));color:#fff}
+  .btn2{border:1px solid var(--bord);color:var(--texte);background:#1a0f2e}
+  footer{text-align:center;color:var(--doux);font-size:13px;margin-top:28px;line-height:1.5}
+  @media (max-width:480px){.jeu{flex-wrap:wrap}.boutons{flex-direction:row;width:100%}.btn{flex:1;min-width:0}}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="logo">BYLUX STUDIO</div>
+    <h1 data-t="titre">Deviens testeur Bylux</h1>
+    <p class="sous" data-t="sous">Joue à nos jeux avant tout le monde et aide-les à sortir sur Google Play.</p>
+  </header>
+
+  <section class="consignes">
+    <h2 data-t="c0">3 étapes, pour chaque jeu :</h2>
+    <ol>
+      <li data-t="c1">Ouvre cette page <b>sur ton téléphone Android</b>, avec <b>le compte Google de l'adresse que tu nous as donnée</b>. Si tu as plusieurs comptes, change de compte en haut à droite de la page Google Play.</li>
+      <li data-t="c2">Touche <b>« Devenir testeur »</b>, puis confirme sur la page Google.</li>
+      <li data-t="c3">Touche <b>« Installer »</b> et <b>garde le jeu 14 jours</b> en l'ouvrant un peu de temps en temps.</li>
+    </ol>
+  </section>
+
+  <div class="jeux" id="jeux"></div>
+
+  <footer data-t="pied">Un souci ? Réponds simplement au mail que tu as reçu. Merci, tu nous aides énormément.</footer>
+</main>
+<script>
+  var JEUX = [
+    ['Casino Bylux', 'casinobylux', 'casino', 9, true],
+    ['Last Bastion', 'dernierbastion', 'bastion', 8],
+    ['Abyss Angler', 'pecheurabysses', 'abyss', 8],
+    ['Rainette', 'rainette', 'rainette', 6],
+    ['Évasion Idle', 'evasionidle', 'evasion', 5],
+    ['Moka & Minou', 'mokaminou', 'moka', 3],
+    ['Gunlight', 'gunlight', 'gunlight', 2],
+    ['Village Bazaar', 'villagebazaar', 'bazaar', 1]
+  ];
+  var EN = {
+    titre: 'Become a Bylux tester',
+    sous: 'Play our games before anyone else and help them launch on Google Play.',
+    c0: '3 steps, for each game:',
+    c1: 'Open this page <b>on your Android phone</b>, with <b>the Google account of the email you gave us</b>. If you have several accounts, switch account at the top right of the Google Play page.',
+    c2: 'Tap <b>“Become a tester”</b>, then confirm on the Google page.',
+    c3: 'Tap <b>“Install”</b> and <b>keep the game for 14 days</b>, opening it a little from time to time.',
+    pied: 'A problem? Just reply to the email you received. Thank you, you help us a lot.',
+    btn1: 'Become a tester', btn2: 'Install', compte: ' / 12 testers', age: '18+'
+  };
+  var FR = { btn1: 'Devenir testeur', btn2: 'Installer', compte: ' / 12 testeurs', age: '18+' };
+  var en = !/^fr/i.test((navigator.languages && navigator.languages[0]) || navigator.language || 'en');
+  var L = en ? EN : FR;
+  if (en) {
+    document.documentElement.lang = 'en';
+    document.title = EN.titre;
+    document.querySelectorAll('[data-t]').forEach(function (e) { var k = e.getAttribute('data-t'); if (EN[k]) e.innerHTML = EN[k]; });
+  }
+  var box = document.getElementById('jeux');
+  JEUX.forEach(function (j) {
+    var pkg = 'com.krimolux.' + j[1];
+    var d = document.createElement('div');
+    d.className = 'jeu';
+    d.innerHTML =
+      '<img src="icones/' + j[2] + '.webp" alt="" width="72" height="72" loading="lazy">' +
+      '<div class="info"><p class="nom"></p>' +
+      '<div class="barre"><span style="width:' + Math.min(100, Math.round(j[3] / 12 * 100)) + '%"></span></div>' +
+      '<div class="compte">' + j[3] + L.compte + (j[4] ? '<span class="age">' + L.age + '</span>' : '') + '</div></div>' +
+      '<div class="boutons">' +
+      '<a class="btn btn1" target="_blank" rel="noopener" href="https://play.google.com/apps/testing/' + pkg + '">' + L.btn1 + '</a>' +
+      '<a class="btn btn2" target="_blank" rel="noopener" href="https://play.google.com/store/apps/details?id=' + pkg + '">' + L.btn2 + '</a>' +
+      '</div>';
+    d.querySelector('.nom').textContent = j[0];
+    box.appendChild(d);
+  });
+</script>
+</body>
+</html>
