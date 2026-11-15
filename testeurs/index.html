@@ -6,6 +6,9 @@
 <title>Devenir testeur Bylux</title>
 <meta name="description" content="Teste nos jeux avant tout le monde sur Google Play.">
 <meta name="robots" content="noindex">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <style>
   :root{--fond:#140b24;--carte:#21143a;--bord:#3a2566;--texte:#f4eefe;--doux:#b9a9d9;--violet:#8b5cf6;--orange:#ff8a3d;--vert:#34d399}
   *{box-sizing:border-box}
@@ -33,6 +36,7 @@
   .btn{display:block;text-align:center;text-decoration:none;font-weight:800;font-size:14px;padding:10px 12px;border-radius:12px;min-width:132px}
   .btn1{background:linear-gradient(90deg,var(--violet),var(--orange));color:#fff}
   .btn2{border:1px solid var(--bord);color:var(--texte);background:#1a0f2e}
+  .maj{text-align:center;color:var(--doux);font-size:13px;margin:12px 0 0}
   footer{text-align:center;color:var(--doux);font-size:13px;margin-top:28px;line-height:1.5}
   @media (max-width:480px){.jeu{flex-wrap:wrap}.boutons{flex-direction:row;width:100%}.btn{flex:1;min-width:0}}
 </style>
@@ -55,6 +59,7 @@
   </section>
 
   <div class="jeux" id="jeux"></div>
+  <p class="maj" id="maj"></p>
 
   <footer data-t="pied">Un souci ? Réponds simplement au mail que tu as reçu. Merci, tu nous aides énormément.</footer>
 </main>
@@ -63,12 +68,14 @@
     ['Casino Bylux', 'casinobylux', 'casino', 9, true],
     ['Last Bastion', 'dernierbastion', 'bastion', 8],
     ['Abyss Angler', 'pecheurabysses', 'abyss', 8],
-    ['Rainette', 'rainette', 'rainette', 6],
     ['Évasion Idle', 'evasionidle', 'evasion', 5],
     ['Moka & Minou', 'mokaminou', 'moka', 3],
     ['Gunlight', 'gunlight', 'gunlight', 2],
     ['Village Bazaar', 'villagebazaar', 'bazaar', 1]
   ];
+  // À changer à chaque relevé de la Console (compteurs + date) ; V force le rechargement des icônes.
+  var MAJ = { j: '15/11', h: '15 h' };
+  var V = '20261115b';
   var EN = {
     titre: 'Become a Bylux tester',
     sous: 'Play our games before anyone else and help them launch on Google Play.',
@@ -77,9 +84,11 @@
     c2: 'Tap <b>“Become a tester”</b>, then confirm on the Google page.',
     c3: 'Tap <b>“Install”</b> and <b>keep the game for 14 days</b>, opening it a little from time to time.',
     pied: 'A problem? Just reply to the email you received. Thank you, you help us a lot.',
-    btn1: 'Become a tester', btn2: 'Install', compte: ' / 12 testers', age: '18+'
+    btn1: 'Become a tester', btn2: 'Install', compte: ' / 12 testers', age: '18+',
+    maj: 'Counters updated on ' + MAJ.j + ' at ' + MAJ.h
   };
-  var FR = { btn1: 'Devenir testeur', btn2: 'Installer', compte: ' / 12 testeurs', age: '18+' };
+  var FR = { btn1: 'Devenir testeur', btn2: 'Installer', compte: ' / 12 testeurs', age: '18+',
+    maj: 'Compteurs mis à jour le ' + MAJ.j + ' à ' + MAJ.h };
   var en = !/^fr/i.test((navigator.languages && navigator.languages[0]) || navigator.language || 'en');
   var L = en ? EN : FR;
   if (en) {
@@ -93,7 +102,7 @@
     var d = document.createElement('div');
     d.className = 'jeu';
     d.innerHTML =
-      '<img src="icones/' + j[2] + '.webp" alt="" width="72" height="72" loading="lazy">' +
+      '<img src="icones/' + j[2] + '.webp?v=' + V + '" alt="" width="72" height="72" loading="lazy">' +
       '<div class="info"><p class="nom"></p>' +
       '<div class="barre"><span style="width:' + Math.min(100, Math.round(j[3] / 12 * 100)) + '%"></span></div>' +
       '<div class="compte">' + j[3] + L.compte + (j[4] ? '<span class="age">' + L.age + '</span>' : '') + '</div></div>' +
@@ -104,6 +113,7 @@
     d.querySelector('.nom').textContent = j[0];
     box.appendChild(d);
   });
+  document.getElementById('maj').textContent = L.maj;
 </script>
 </body>
 </html>
