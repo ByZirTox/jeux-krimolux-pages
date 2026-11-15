@@ -1,5 +1,5 @@
 {
-  "maj": "2026-11-15T16:30",
+  "maj": "2026-11-15T18:00",
   "objectif": 12,
   "jeux": [
     {
@@ -8,7 +8,7 @@
       "inscription": "https://play.google.com/apps/testing/com.byzirtox.lockdown",
       "play": "https://play.google.com/store/apps/details?id=com.byzirtox.lockdown",
       "web": "https://lockdown.dragonnet.online/",
-      "testeurs": 11,
+      "testeurs": 12,
       "age": "16+",
       "icone": "icones/lockdown.webp",
       "image": null,
