@@ -67,20 +67,20 @@
   <footer data-t="pied">Un souci ? Réponds simplement au mail que tu as reçu. Merci, tu nous aides énormément.</footer>
 </main>
 <script>
-  // [nom, paquet complet, icône, testeurs, âge mini ('' si tout public), site web DÉJÀ en ligne (PWA) ou rien]
+  // [nom, paquet complet, icône, testeurs, âge mini ('' si tout public), site web DÉJÀ en ligne ou '', PWA (consigne iPhone)]
   var JEUX = [
-    ['Lockdown: Extraction', 'com.byzirtox.lockdown', 'lockdown', 11, '16+', 'https://lockdown.dragonnet.online/'],
-    ['Casino Bylux', 'casinobylux', 'casino', 9, '18+', 'https://casino.dragonnet.online/'],
-    ['Last Bastion', 'dernierbastion', 'bastion', 8],
-    ['Abyss Angler', 'pecheurabysses', 'abyss', 8],
-    ['Évasion Idle', 'evasionidle', 'evasion', 5],
-    ['Moka & Minou', 'mokaminou', 'moka', 3],
-    ['Gunlight', 'gunlight', 'gunlight', 2],
-    ['Village Bazaar', 'villagebazaar', 'bazaar', 1]
+    ['Lockdown: Extraction', 'com.byzirtox.lockdown', 'lockdown', 11, '16+', 'https://lockdown.dragonnet.online/', true],
+    ['Casino Bylux', 'casinobylux', 'casino', 9, '18+', 'https://casino.dragonnet.online/', true],
+    ['Last Bastion', 'dernierbastion', 'bastion', 8, '', 'https://bastion.dragonnet.online/'],
+    ['Abyss Angler', 'pecheurabysses', 'abyss', 8, '', 'https://abyss.dragonnet.online/'],
+    ['Évasion Idle', 'evasionidle', 'evasion', 5, '', 'https://evasion.dragonnet.online/'],
+    ['Moka & Minou', 'mokaminou', 'moka', 3, '', 'https://moka.dragonnet.online/'],
+    ['Gunlight', 'gunlight', 'gunlight', 2, '', 'https://gunlight.dragonnet.online/'],
+    ['Village Bazaar', 'villagebazaar', 'bazaar', 1, '', 'https://bazaar.dragonnet.online/']
   ];
   // À changer à chaque relevé de la Console (compteurs + date) ; V force le rechargement des icônes.
-  var MAJ = { j: '15/11', h: '16 h 15' };
-  var V = '20261115d';
+  var MAJ = { j: '15/11', h: '16 h 30' };
+  var V = '20261115e';
   var EN = {
     titre: 'Become a Bylux tester',
     sous: 'Play our games before anyone else and help them launch on Google Play.',
@@ -115,7 +115,7 @@
       '<div class="info"><p class="nom"></p>' +
       '<div class="barre"><span style="width:' + Math.min(100, Math.round(j[3] / 12 * 100)) + '%"></span></div>' +
       '<div class="compte">' + j[3] + L.compte + (j[4] ? '<span class="age">' + j[4] + '</span>' : '') + '</div>' +
-      (j[5] ? '<div class="pwa">' + L.pwa + '</div>' : '') + '</div>' +
+      (j[6] ? '<div class="pwa">' + L.pwa + '</div>' : '') + '</div>' +
       '<div class="boutons">' +
       '<a class="btn btn1" target="_blank" rel="noopener" href="https://play.google.com/apps/testing/' + pkg + '">' + L.btn1 + '</a>' +
       '<a class="btn btn2" target="_blank" rel="noopener" href="https://play.google.com/store/apps/details?id=' + pkg + '">' + L.btn2 + '</a>' +
