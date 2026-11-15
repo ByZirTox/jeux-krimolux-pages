@@ -1,10 +1,15 @@
 import { defineConfig } from 'vite';
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
+import { LANGUES, RTL, ECRITURES_COMPLEXES } from './langues.mjs';
 
 // jeux.json n'est PAS dans les sources : il vit dans ../testeurs/ et se modifie à la main,
 // sans rebuild. En dev, on le sert depuis là-bas.
 const JSON_PROD = fileURLToPath(new URL('../testeurs/jeux.json', import.meta.url));
+// L'anglais (langue de repli) est intégré au JS ; les autres langues sont des fichiers
+// public/langues/<code>.json chargés à la demande (copiés tels quels dans ../testeurs/langues/).
+const EN = fileURLToPath(new URL('./public/langues/en.json', import.meta.url));
+const echapper = (s) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
 export default defineConfig({
   base: './',
@@ -17,6 +22,23 @@ export default defineConfig({
     modulePreload: false,
   },
   plugins: [{
+    // Registre des langues : module virtuel pour le JS, liste injectée dans le <head> et options du sélecteur.
+    name: 'langues',
+    resolveId: (id) => (id === 'virtuel:langues' ? '\0virtuel:langues' : null),
+    load(id) {
+      if (id !== '\0virtuel:langues') return null;
+      this.addWatchFile(EN);
+      return `export const LANGUES = ${JSON.stringify(LANGUES)};\nexport const RTL = ${JSON.stringify(RTL)};\nexport const COMPLEXES = ${JSON.stringify(ECRITURES_COMPLEXES)};\nexport const EN = ${readFileSync(EN, 'utf8')};`;
+    },
+    transformIndexHtml: {
+      order: 'pre',
+      handler: (html) => html
+        .replace('__LANGUES__', JSON.stringify(LANGUES.map(([c]) => c)))
+        .replace('__RTL__', JSON.stringify(RTL))
+        .replace('__COMPLEXES__', JSON.stringify(ECRITURES_COMPLEXES))
+        .replace('<!--OPTIONS-LANGUES-->', LANGUES.map(([c, n]) => `<option value="${c}" lang="${c}">${echapper(n)}</option>`).join('')),
+    },
+  }, {
     // CSS (≈ 4 Ko gzip) inliné dans index.html : un aller-retour réseau de moins avant le 1er rendu.
     name: 'css-en-ligne',
     apply: 'build',
