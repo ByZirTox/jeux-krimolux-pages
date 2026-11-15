@@ -2,130 +2,130 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Devenir testeur Bylux</title>
-<meta name="description" content="Teste nos jeux avant tout le monde sur Google Play.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bylux Studio · Deviens testeur</title>
+<meta name="description" content="Joue aux jeux mobiles de Bylux Studio avant tout le monde : rejoins le test fermé sur Google Play.">
 <meta name="robots" content="noindex">
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="0">
-<style>
-  :root{--fond:#140b24;--carte:#21143a;--bord:#3a2566;--texte:#f4eefe;--doux:#b9a9d9;--violet:#8b5cf6;--orange:#ff8a3d;--vert:#34d399}
-  *{box-sizing:border-box}
-  body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:radial-gradient(circle at 20% 0%,#2b1650 0,var(--fond) 55%);color:var(--texte);min-height:100vh}
-  main{max-width:720px;margin:0 auto;padding:28px 16px 48px}
-  header{text-align:center;margin-bottom:22px}
-  .logo{font-weight:900;letter-spacing:.18em;font-size:14px;background:linear-gradient(90deg,var(--violet),var(--orange));-webkit-background-clip:text;background-clip:text;color:transparent}
-  h1{font-size:clamp(26px,7vw,38px);margin:8px 0 6px}
-  .sous{color:var(--doux);margin:0;font-size:16px}
-  .consignes{background:linear-gradient(135deg,rgba(139,92,246,.25),rgba(255,138,61,.18));border:2px solid var(--orange);border-radius:18px;padding:16px 18px;margin:20px 0 26px}
-  .consignes h2{margin:0 0 10px;font-size:19px}
-  .consignes ol{margin:0;padding-left:22px;font-size:16px;line-height:1.5}
-  .consignes li{margin:6px 0}
-  .consignes b{color:#ffd2b3}
-  .jeux{display:grid;gap:14px}
-  .jeu{display:flex;gap:14px;align-items:center;background:var(--carte);border:1px solid var(--bord);border-radius:18px;padding:14px}
-  .jeu img{width:72px;height:72px;border-radius:16px;flex:none;background:#000}
-  .info{flex:1;min-width:0}
-  .nom{font-weight:800;font-size:17px;margin:0 0 4px}
-  .barre{height:8px;background:#0e0718;border-radius:9px;overflow:hidden;margin:6px 0 4px}
-  .barre span{display:block;height:100%;background:linear-gradient(90deg,var(--violet),var(--orange))}
-  .compte{font-size:13px;color:var(--doux)}
-  .age{font-size:12px;color:#ffb4b4;margin-left:6px}
-  .boutons{display:flex;flex-direction:column;gap:8px;flex:none}
-  .btn{display:block;text-align:center;text-decoration:none;font-weight:800;font-size:14px;padding:10px 12px;border-radius:12px;min-width:132px}
-  .btn1{background:linear-gradient(90deg,var(--violet),var(--orange));color:#fff}
-  .btn2{border:1px solid var(--bord);color:var(--texte);background:#1a0f2e}
-  .btn3{border:1px solid var(--orange);color:#ffd2b3;background:#1a0f2e}
-  .btn3.off{border-color:var(--bord);color:var(--doux);opacity:.55;font-weight:600;cursor:default}
-  .pwa{font-size:12px;color:#ffd2b3;margin-top:4px}
-  .maj{text-align:center;color:var(--doux);font-size:13px;margin:12px 0 0}
-  footer{text-align:center;color:var(--doux);font-size:13px;margin-top:28px;line-height:1.5}
-  @media (max-width:480px){.jeu{flex-wrap:wrap}.boutons{flex-direction:row;flex-wrap:wrap;width:100%}.btn{flex:1;min-width:0}.btn3{flex-basis:100%}}
-</style>
+<meta name="theme-color" content="#0a0518">
+<meta name="color-scheme" content="dark">
+<meta http-equiv="Cache-Control" content="no-cache">
+<link rel="icon" type="image/webp" href="images/logo-bylux-96.webp">
+<link rel="preload" href="images/logo-bylux-96.webp" as="image">
+<script>
+  // Langue avant le premier rendu (évite le clignotement FR → EN).
+  (function () {
+    var l = null;
+    try { l = new URLSearchParams(location.search).get('lang') || localStorage.getItem('bylux-lang'); } catch (e) {}
+    if (l !== 'fr' && l !== 'en') l = /^fr/i.test((navigator.languages && navigator.languages[0]) || navigator.language || '') ? 'fr' : 'en';
+    document.documentElement.lang = l;
+    document.documentElement.className = 'js';
+    // Les données partent tout de suite (no-cache : toujours revalidées, compteurs à jour sans rebuild).
+    window.__jeux = fetch('jeux.json', { cache: 'no-cache' }).then(function (r) { if (!r.ok) throw r.status; return r.json(); });
+    window.__jeux.catch(function () {});
+  })();
+</script>
+  <script type="module" crossorigin src="./assets/index-BWRn3GT_.js"></script>
+  <style>:root{--fond:#0a0518;--fond-2:#140b2e;--panneau:#170d36;--bord:#34236b;--texte:#f5f0ff;--doux:#c8bdeb;--cyan:#5ee6ff;--violet:#a78bfa;--rose:#ff4fd8;--degrade:linear-gradient(100deg, var(--cyan), var(--violet) 50%, var(--rose));--btn:linear-gradient(100deg, #5b21b6, #7c3aed 45%, #a21caf);--rayon:22px;--ombre-neon:0 0 0 1px #a78bfa59, 0 10px 40px -12px #7c3aed8c;--lightningcss-light: ;--lightningcss-dark:initial;color-scheme:dark}*,:before,:after{box-sizing:border-box}html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:72px}body{min-height:100vh;color:var(--texte);background:radial-gradient(60rem 40rem at 110% -10%, #ff4fd829, transparent 60%), radial-gradient(50rem 40rem at -20% 10%, #5ee6ff1f, transparent 60%), var(--fond);margin:0;font:16px/1.55 system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Noto Sans,Ubuntu,Cantarell,Helvetica Neue,Arial,sans-serif;overflow-x:hidden}img{max-width:100%;display:block}a{color:var(--cyan)}b{color:#fff;font-weight:700}:focus-visible{outline:3px solid var(--cyan);outline-offset:3px;border-radius:8px}.enveloppe{width:100%;max-width:1180px;margin:0 auto;padding:0 16px}.vh{clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;width:1px;height:1px;overflow:hidden;position:absolute!important}.saut{z-index:50;color:#120a2a;background:#fff;border-radius:12px;padding:12px 16px;font-weight:700;position:absolute;top:-100px;left:12px}.saut:focus{top:12px}.barre-haut{z-index:20;-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);background:#0a0518c7;border-bottom:1px solid #a78bfa2e;position:-webkit-sticky;position:sticky;top:0}.barre-haut__in{justify-content:space-between;align-items:center;min-height:60px;display:flex}.marque{color:var(--texte);align-items:center;gap:10px;min-height:48px;text-decoration:none;display:flex}.marque img{border-radius:50%;width:40px;height:40px;box-shadow:0 0 18px #a78bfa8c}.marque__nom{letter-spacing:.06em;font-size:18px;font-style:italic;font-weight:900}.marque__nom span{letter-spacing:.32em;background:var(--degrade);color:#0000;-webkit-background-clip:text;background-clip:text;margin-left:4px;font-size:12px;font-style:normal;font-weight:600}.langue{border:1px solid var(--bord);background:var(--fond-2);min-width:48px;min-height:48px;color:var(--texte);font:inherit;letter-spacing:.08em;cursor:pointer;border-radius:999px;padding:0 14px;font-weight:800}.langue:hover{border-color:var(--violet)}.hero{text-align:center;isolation:isolate;padding:36px 0 44px;position:relative;overflow:hidden}.hero__grille{z-index:-1;transform-origin:bottom;height:55%;position:absolute;top:auto;bottom:-2px;left:-40%;right:-40%;overflow:hidden;transform:perspective(300px)rotateX(58deg);-webkit-mask-image:linear-gradient(#0000,#000 70%);mask-image:linear-gradient(#0000,#000 70%)}.hero__grille:before{content:"";will-change:transform;background:linear-gradient(#0000 0,#0000 calc(100% - 1px),#5ee6ff59 0) 0 0/100% 34px,linear-gradient(90deg,#0000 0,#0000 calc(100% - 1px),#a78bfa59 0) 0 0/46px 100%;animation:3s linear infinite grille;position:absolute;top:-34px;bottom:0;left:0;right:0}@keyframes grille{to{transform:translateY(34px)}}.hero__in{flex-direction:column;align-items:center;display:flex}.pastille{color:#c9f6ff;background:#5ee6ff14;border:1px solid #5ee6ff59;border-radius:999px;align-items:center;gap:8px;margin:0 0 18px;padding:7px 14px;font-size:14px;font-weight:700;display:inline-flex}.point{background:#3ef0a0;border-radius:50%;width:8px;height:8px;animation:1.8s ease-in-out infinite pouls;box-shadow:0 0 10px #3ef0a0}@keyframes pouls{50%{opacity:.35}}h1{letter-spacing:-.02em;max-width:16ch;margin:0;font-size:max(34px,min(10vw,68px));font-weight:900;line-height:1.04}.neon{background:var(--degrade);color:#0000;filter:drop-shadow(0 0 18px #a78bfa73);-webkit-background-clip:text;background-clip:text;font-style:italic;display:block}.hero__sous{max-width:38rem;color:var(--doux);margin:16px 0 24px;font-size:17px}.chiffres{grid-template-columns:repeat(3,1fr);gap:8px;width:100%;max-width:30rem;margin:28px 0 0;padding:0;list-style:none;display:grid}.chiffres li{border:1px solid var(--bord);background:#170d36bf;border-radius:16px;flex-direction:column;align-items:center;padding:12px 4px;display:flex}.chiffres b{background:var(--degrade);color:#0000;-webkit-background-clip:text;background-clip:text;font-size:28px;font-weight:900;line-height:1.1}.chiffres span{color:var(--doux);font-size:13px;line-height:1.25}.btn{text-align:center;border-radius:14px;justify-content:center;align-items:center;gap:8px;min-height:48px;padding:10px 18px;font-size:16px;font-weight:800;line-height:1.15;text-decoration:none;transition:transform .15s,box-shadow .2s,border-color .2s;display:inline-flex}.btn:active{transform:scale(.98)}.btn--principal{color:#fff;background:var(--btn);box-shadow:0 6px 24px -6px #a21cafb3,inset 0 1px #fff3}.btn--principal:hover{box-shadow:0 8px 32px -4px #a21cafe6,inset 0 1px #ffffff40}.btn--hero{padding:14px 26px;font-size:17px}.btn--hero svg{animation:1.6s ease-in-out infinite rebond}@keyframes rebond{50%{transform:translateY(3px)}}.btn--contour{color:#d9f8ff;background:#5ee6ff0f;border:1.5px solid #5ee6ff8c}.btn--contour:hover{border-color:var(--cyan)}.btn--web,.btn--off{flex-direction:column;gap:0}.btn small{opacity:.9;font-size:12px;font-weight:600}.btn--web{color:#ffe1f8;background:#ff4fd814;border:1.5px solid #ff4fd899}.btn--web:hover{border-color:var(--rose)}.btn--off{color:#a99cc9;cursor:not-allowed;background:0 0;border:1.5px dashed #3d2d72;font-weight:700}.titre-section{margin:0 0 18px;font-size:max(24px,min(6.5vw,34px));font-weight:900;line-height:1.15}.titre-section:after{content:"";background:var(--degrade);border-radius:4px;width:56px;height:4px;margin-top:10px;display:block;box-shadow:0 0 14px #a78bfab3}.etapes{padding-top:8px;padding-bottom:40px}.etapes__liste{gap:12px;margin:0;padding:0;list-style:none;display:grid}.etape{border-radius:var(--rayon);background:var(--panneau);border:1px solid var(--bord);grid-template-columns:64px 1fr;align-items:start;column-gap:14px;padding:16px;display:grid;position:relative}.etape h3{grid-column:2;margin:2px 0 4px;font-size:18px}.etape p{color:var(--doux);grid-column:2;margin:0;font-size:15px}.etape__num{color:#0000;-webkit-text-stroke:1.5px #a78bfa73;font-size:40px;font-style:italic;font-weight:900;line-height:1;position:absolute;top:10px;right:14px}.picto{background:radial-gradient(circle at 30% 20%,#5ee6ff40,#7c3aed40 60%,#ff4fd833);border:1px solid #a78bfa73;border-radius:18px;grid-row:1/span 2;place-items:center;width:64px;height:64px;display:grid;box-shadow:0 0 22px -6px #a78bfacc}.picto svg{width:44px;height:44px;overflow:visible}.picto .trait{fill:none;stroke:#e7deff;stroke-width:3.4px;stroke-linecap:round;stroke-linejoin:round}.picto .accent{stroke:var(--cyan)}.picto .main{stroke:#ffd6f6}.picto .plein{fill:#e7deff}.picto .onde{fill:none;stroke:var(--rose);stroke-width:2.5px}.picto--1 svg{animation:3.2s ease-in-out infinite flotte}.picto--2 svg{animation:2.4s ease-in-out infinite tape}.picto--3 svg{animation:2.6s ease-in-out infinite balance}.picto:after{content:"";border-radius:inherit;border:2px solid var(--rose);opacity:0;pointer-events:none;animation:2.4s ease-out infinite onde;position:absolute;top:-1px;bottom:-1px;left:-1px;right:-1px}.picto{position:relative}.picto--1:after{animation-delay:.8s}.picto--3:after{animation-delay:1.6s}@keyframes flotte{50%{transform:translateY(-3px)}}@keyframes tape{0%,to{transform:translateY(0)scale(1)}30%{transform:translateY(-3px)scale(1.04)}45%{transform:translateY(1px)scale(.97)}}@keyframes balance{0%,to{transform:rotate(0)}25%{transform:rotate(-6deg)}75%{transform:rotate(6deg)}}@keyframes onde{0%{opacity:.9;transform:scale(1)}70%,to{opacity:0;transform:scale(1.35)}}#jeux{outline:none;padding-bottom:40px}.maj{color:var(--doux);min-height:1.5em;margin:-6px 0 18px;font-size:14px}.cartes{gap:18px;display:grid}.carte{border-radius:var(--rayon);border:1px solid var(--bord);min-width:0;animation:.5s both entree;animation-delay:calc(var(--i,0) * 60ms);background:linear-gradient(#1b1040,#120a2a);flex-direction:column;display:flex;overflow:hidden;box-shadow:0 18px 40px -24px #000}@keyframes entree{0%{opacity:0;transform:translateY(14px)}}.carte--une{box-shadow:var(--ombre-neon);border-color:#a78bfaa6}.carte--fantome{background:#1a1040;min-height:460px;animation:1.2s ease-in-out infinite alternate fantome}@keyframes fantome{to{opacity:.5}}.carte__media{aspect-ratio:1024/500;background:#0d0720;position:relative;overflow:hidden}.carte__banniere{object-fit:cover;width:100%;height:100%}.carte__media:after{content:"";pointer-events:none;background:linear-gradient(#0000,#120a2ae6);position:absolute;top:55%;bottom:0;left:0;right:0}.carte__fond-icone{place-items:center;width:100%;height:100%;display:grid;position:relative}.carte__fond-icone:before{content:"";background:var(--img) center / cover no-repeat;filter:blur(22px)saturate(1.3)brightness(.7);position:absolute;top:-20%;bottom:-20%;left:-20%;right:-20%}.carte__fond-icone img{aspect-ratio:1;border-radius:26%;width:44%;max-width:168px;height:auto;position:relative;box-shadow:0 0 0 2px #ffffff26,0 16px 40px #0000008c}.carte__badges{z-index:1;gap:6px;display:flex;position:absolute;top:10px;right:10px}.badge{border-radius:999px;padding:4px 10px;font-size:13px;font-weight:800;line-height:1.3}.badge--age{color:#ffd0d8;background:#3c0616d9;border:1px solid #ff6b81}.badge--web{color:#c9f6ff;border:1px solid var(--cyan);background:#0a1e2dd9}.carte__corps{flex-direction:column;flex:1;gap:12px;padding:0 16px 16px;display:flex}.carte__tete{z-index:1;align-items:flex-end;gap:12px;margin-top:-30px;display:flex;position:relative}.carte__icone{background:#000;border-radius:16px;flex:none;width:64px;height:64px;box-shadow:0 0 0 3px #1b1040,0 0 0 4px #a78bfa80,0 8px 20px #00000080}.carte__titres{min-width:0;padding-bottom:2px}.carte__nom{overflow-wrap:anywhere;margin:0;font-size:20px;font-weight:900;line-height:1.2}.carte__genre{color:var(--violet);text-transform:uppercase;letter-spacing:.06em;margin:2px 0 0;font-size:13px;font-weight:700}.carte__accroche{color:#e4dcff;margin:0;font-size:15.5px}.compteur__ligne{color:var(--doux);flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px;font-size:14px;display:flex}.compteur__nb b{color:#fff;font-size:18px}.compteur__etat{color:#ffc6f1;font-weight:700}.compteur__etat.ok{color:#7ff5bf}.jauge{background:#0b0620;border:1px solid #2a1c58;border-radius:99px;height:10px;margin-top:6px;overflow:hidden}.jauge span{height:100%;width:var(--p);border-radius:inherit;background:var(--degrade);transform-origin:0;animation:1s cubic-bezier(.2,.8,.2,1) both remplit;animation-delay:calc(var(--i,0) * 60ms + .2s);display:block;box-shadow:0 0 12px #a78bfacc}@keyframes remplit{0%{transform:scaleX(0)}}.actions{grid-template-columns:1fr 1fr;gap:10px;margin-top:auto;display:grid}.actions .btn--principal{grid-column:1/-1;font-size:17px}.astuce{color:var(--doux);margin:-2px 0 0;font-size:13px}.erreur{background:#3c061680;border:1px solid #ff6b81;border-radius:16px;padding:18px}.faq{max-width:820px;padding-bottom:40px}.faq details{background:var(--panneau);border:1px solid var(--bord);border-radius:16px;margin-bottom:10px}.faq details[open]{border-color:#a78bfa99}.faq summary{cursor:pointer;min-height:48px;padding:14px 48px 14px 16px;font-size:16px;font-weight:800;list-style:none;position:relative}.faq summary::-webkit-details-marker{display:none}.faq summary:after{content:"";border-right:2.5px solid var(--cyan);border-bottom:2.5px solid var(--cyan);width:10px;height:10px;margin-top:-7px;transition:transform .2s;position:absolute;top:50%;right:18px;transform:rotate(45deg)}.faq details[open] summary:after{margin-top:-2px;transform:rotate(-135deg)}.faq details p{color:var(--doux);margin:0;padding:0 16px 16px}.pied{padding:28px 0 calc(28px + env(safe-area-inset-bottom));text-align:center;color:var(--doux);background:#080414b3;border-top:1px solid #a78bfa33;font-size:14px}.pied__in{flex-direction:column;align-items:center;display:flex}.pied img{border-radius:50%;width:56px;height:56px;margin-bottom:8px;box-shadow:0 0 20px #a78bfa73}.pied p{margin:4px 0}.pied__merci{color:var(--texte);font-size:16px;font-weight:800}.pied a{align-items:center;min-height:48px;padding:0 8px;display:inline-flex}.pied__copy{opacity:.85;font-size:13px}@media (min-width:820px){.etapes__liste{grid-template-columns:repeat(3,1fr);gap:16px}.etape{grid-template-columns:1fr;padding:20px}.etape h3,.etape p{grid-column:1}.picto{grid-row:auto;margin-bottom:12px}}@media (min-width:760px){.enveloppe{padding:0 24px}.cartes{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}.hero{padding:64px 0 72px}}@media (min-width:1100px){.cartes{grid-template-columns:repeat(3,minmax(0,1fr))}.carte--une{flex-direction:row;grid-column:span 2}.carte--une .carte__media{aspect-ratio:auto;flex:1.15;min-height:100%}.carte--une .carte__corps{flex:1;padding-top:20px}.carte--une .carte__tete{margin-top:0}.carte--une .carte__media:after{display:none}}@media (prefers-reduced-motion:reduce){*,:before,:after{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+/*$vite$:1*/</style>
 </head>
 <body>
-<main>
-  <header>
-    <div class="logo">BYLUX STUDIO</div>
-    <h1 data-t="titre">Deviens testeur Bylux</h1>
-    <p class="sous" data-t="sous">Joue à nos jeux avant tout le monde et aide-les à sortir sur Google Play.</p>
-  </header>
+<a class="saut" href="#jeux" data-t="saut">Aller aux jeux</a>
 
-  <section class="consignes">
-    <h2 data-t="c0">3 étapes, pour chaque jeu :</h2>
-    <ol>
-      <li data-t="c1">Ouvre cette page <b>sur ton téléphone Android</b>, avec <b>le compte Google de l'adresse que tu nous as donnée</b>. Si tu as plusieurs comptes, change de compte en haut à droite de la page Google Play.</li>
-      <li data-t="c2">Touche <b>« Devenir testeur »</b>, puis confirme sur la page Google.</li>
-      <li data-t="c3">Touche <b>« Installer »</b> et <b>garde le jeu 14 jours</b> en l'ouvrant un peu de temps en temps.</li>
+<header class="barre-haut">
+  <div class="enveloppe barre-haut__in">
+    <a class="marque" href="#haut">
+      <img src="images/logo-bylux-96.webp" alt="" width="40" height="40">
+      <span class="marque__nom">BYLUX <span>STUDIO</span></span>
+    </a>
+    <button class="langue" id="langue" type="button" ><span class="vh">Switch to English: </span>EN</button>
+  </div>
+</header>
+
+<main id="haut">
+  <section class="hero">
+    <div class="hero__grille" aria-hidden="true"></div>
+    <div class="enveloppe hero__in">
+      <p class="pastille"><span class="point" aria-hidden="true"></span><span data-t="pastille">Test fermé · Google Play</span></p>
+      <h1><span data-t="h1a">Joue à nos jeux</span> <span class="neon" data-t="h1b">avant tout le monde</span></h1>
+      <p class="hero__sous" data-t="sous">Rejoins les testeurs Bylux : tu découvres nos jeux mobiles en avant-première et tu nous aides à les sortir sur Google Play.</p>
+      <a class="btn btn--principal btn--hero" href="#jeux"><span data-t="cta">Voir les jeux</span> <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24"><path d="M12 4v14m0 0-6-6m6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <ul class="chiffres">
+        <li><b id="nb-jeux">8</b><span data-t="ch1">jeux en test</span></li>
+        <li><b>12</b><span data-t="ch2">testeurs par jeu</span></li>
+        <li><b>14</b><span data-t="ch3">jours de test</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="enveloppe etapes" aria-labelledby="t-etapes">
+    <h2 id="t-etapes" class="titre-section" data-t="etapesT">3 étapes, pour chaque jeu</h2>
+    <ol class="etapes__liste">
+      <li class="etape">
+        <div class="picto picto--1" aria-hidden="true">
+          <svg viewBox="0 0 64 64"><rect x="18" y="6" width="28" height="52" rx="6" class="trait"/><circle cx="32" cy="27" r="7" class="trait accent"/><path d="M22 46c2-6 6-8 10-8s8 2 10 8" class="trait accent"/><circle cx="32" cy="52" r="1.8" class="plein"/></svg>
+        </div>
+        <span class="etape__num">1</span>
+        <h3 data-t="e1t">Le bon compte</h3>
+        <p data-t="e1">Ouvre cette page <b>sur ton Android</b>, connecté au <b>compte Google de l’adresse que tu nous as donnée</b>.</p>
+      </li>
+      <li class="etape">
+        <div class="picto picto--2" aria-hidden="true">
+          <svg viewBox="0 0 64 64"><rect x="8" y="16" width="48" height="20" rx="10" class="trait"/><path d="M24 26h16" class="trait accent"/><path d="M36 58V40.5a3.5 3.5 0 0 1 7 0V47l7 1.5a4 4 0 0 1 3 4.6L52 58" class="trait main"/><circle cx="39.5" cy="34" r="6" class="onde"/></svg>
+        </div>
+        <span class="etape__num">2</span>
+        <h3 data-t="e2t">Deviens testeur</h3>
+        <p data-t="e2">Touche <b>« Devenir testeur »</b> sur la carte du jeu, puis confirme sur la page Google.</p>
+      </li>
+      <li class="etape">
+        <div class="picto picto--3" aria-hidden="true">
+          <svg viewBox="0 0 64 64"><rect x="8" y="12" width="48" height="44" rx="8" class="trait"/><path d="M8 24h48M20 6v10M44 6v10" class="trait"/><path d="M32 30v16m0 0-6-6m6 6 6-6" class="trait accent fleche"/></svg>
+        </div>
+        <span class="etape__num">3</span>
+        <h3 data-t="e3t">Installe et garde-le</h3>
+        <p data-t="e3">Touche <b>« Installer »</b> et <b>garde le jeu 14 jours</b>, en l’ouvrant un peu de temps en temps.</p>
+      </li>
     </ol>
   </section>
 
-  <div class="jeux" id="jeux"></div>
-  <p class="maj" id="maj"></p>
+  <section class="enveloppe" id="jeux" aria-labelledby="t-jeux" tabindex="-1">
+    <h2 id="t-jeux" class="titre-section" data-t="jeuxT">Nos jeux en test</h2>
+    <p class="maj" id="maj" aria-live="polite"></p>
+    <div class="cartes" id="cartes" aria-busy="true">
+      <div class="carte carte--fantome" aria-hidden="true"></div>
+      <div class="carte carte--fantome" aria-hidden="true"></div>
+    </div>
+  </section>
 
-  <footer data-t="pied">Un souci ? Réponds simplement au mail que tu as reçu. Merci, tu nous aides énormément.</footer>
+  <section class="enveloppe faq" aria-labelledby="t-faq">
+    <h2 id="t-faq" class="titre-section" data-t="faqT">Questions fréquentes</h2>
+    <details>
+      <summary data-t="q1">Je ne suis pas encore testeur, je peux participer ?</summary>
+      <p data-t="r1">Oui ! Le test est fermé : seule une adresse Gmail de notre liste peut s’inscrire. Envoie ton adresse Gmail à la personne qui t’a partagé cette page ; dès qu’elle est ajoutée, reviens ici et suis les 3 étapes. En attendant, les jeux avec un bouton « Jouer sur le web » sont ouverts à tous.</p>
+    </details>
+    <details>
+      <summary data-t="q2">J’ai un iPhone, comment je fais ?</summary>
+      <p data-t="r2">Le test Google Play ne marche que sur Android. Sur iPhone (ou PC), touche « Jouer sur le web » quand le bouton est actif. Astuce : dans Safari, Partager → « Sur l’écran d’accueil » pour l’avoir comme une vraie appli.</p>
+    </details>
+    <details>
+      <summary data-t="q3">Pourquoi garder le jeu 14 jours ?</summary>
+      <p data-t="r3">Google demande au moins 12 testeurs qui gardent le jeu installé 14 jours d’affilée avant de nous laisser le publier. Pas besoin d’y jouer des heures : ouvre-le un peu de temps en temps, et surtout ne le désinstalle pas.</p>
+    </details>
+    <details>
+      <summary data-t="q4">La page Google dit que je ne peux pas m’inscrire ?</summary>
+      <p data-t="r4">C’est presque toujours le mauvais compte Google. Sur la page Google Play, touche ta photo en haut à droite et choisis le compte de l’adresse que tu nous as donnée, puis réessaie.</p>
+    </details>
+  </section>
 </main>
-<script>
-  // [nom, paquet complet, icône, testeurs, âge mini ('' si tout public), site web DÉJÀ en ligne (PWA) ou rien]
-  var JEUX = [
-    ['Lockdown: Extraction', 'com.byzirtox.lockdown', 'lockdown', 11, '16+', 'https://lockdown.dragonnet.online/'],
-    ['Casino Bylux', 'casinobylux', 'casino', 9, '18+', 'https://casino.dragonnet.online/'],
-    ['Last Bastion', 'dernierbastion', 'bastion', 8],
-    ['Abyss Angler', 'pecheurabysses', 'abyss', 8],
-    ['Évasion Idle', 'evasionidle', 'evasion', 5],
-    ['Moka & Minou', 'mokaminou', 'moka', 3],
-    ['Gunlight', 'gunlight', 'gunlight', 2],
-    ['Village Bazaar', 'villagebazaar', 'bazaar', 1]
-  ];
-  // À changer à chaque relevé de la Console (compteurs + date) ; V force le rechargement des icônes.
-  var MAJ = { j: '15/11', h: '16 h 15' };
-  var V = '20261115d';
-  var EN = {
-    titre: 'Become a Bylux tester',
-    sous: 'Play our games before anyone else and help them launch on Google Play.',
-    c0: '3 steps, for each game:',
-    c1: 'Open this page <b>on your Android phone</b>, with <b>the Google account of the email you gave us</b>. If you have several accounts, switch account at the top right of the Google Play page.',
-    c2: 'Tap <b>“Become a tester”</b>, then confirm on the Google page.',
-    c3: 'Tap <b>“Install”</b> and <b>keep the game for 14 days</b>, opening it a little from time to time.',
-    pied: 'A problem? Just reply to the email you received. Thank you, you help us a lot.',
-    btn1: 'Become a tester', btn2: 'Install', compte: ' / 12 testers', age: '18+',
-    btn3: 'Play on the web (iPhone / PC)', btn3off: 'Coming soon on the web',
-    pwa: 'iPhone: Safari → Share → “Add to Home Screen”.',
-    maj: 'Counters updated on ' + MAJ.j + ' at ' + MAJ.h
-  };
-  var FR = { btn1: 'Devenir testeur', btn2: 'Installer', compte: ' / 12 testeurs', age: '18+',
-    btn3: 'Jouer sur le web (iPhone / PC)', btn3off: 'Bientôt sur le web',
-    pwa: 'iPhone : Safari → Partager → « Sur l’écran d’accueil ».',
-    maj: 'Compteurs mis à jour le ' + MAJ.j + ' à ' + MAJ.h };
-  var en = !/^fr/i.test((navigator.languages && navigator.languages[0]) || navigator.language || 'en');
-  var L = en ? EN : FR;
-  if (en) {
-    document.documentElement.lang = 'en';
-    document.title = EN.titre;
-    document.querySelectorAll('[data-t]').forEach(function (e) { var k = e.getAttribute('data-t'); if (EN[k]) e.innerHTML = EN[k]; });
-  }
-  var box = document.getElementById('jeux');
-  JEUX.forEach(function (j) {
-    var pkg = j[1].indexOf('.') > 0 ? j[1] : 'com.krimolux.' + j[1];
-    var d = document.createElement('div');
-    d.className = 'jeu';
-    d.innerHTML =
-      '<img src="icones/' + j[2] + '.webp?v=' + V + '" alt="" width="72" height="72" loading="lazy">' +
-      '<div class="info"><p class="nom"></p>' +
-      '<div class="barre"><span style="width:' + Math.min(100, Math.round(j[3] / 12 * 100)) + '%"></span></div>' +
-      '<div class="compte">' + j[3] + L.compte + (j[4] ? '<span class="age">' + j[4] + '</span>' : '') + '</div>' +
-      (j[5] ? '<div class="pwa">' + L.pwa + '</div>' : '') + '</div>' +
-      '<div class="boutons">' +
-      '<a class="btn btn1" target="_blank" rel="noopener" href="https://play.google.com/apps/testing/' + pkg + '">' + L.btn1 + '</a>' +
-      '<a class="btn btn2" target="_blank" rel="noopener" href="https://play.google.com/store/apps/details?id=' + pkg + '">' + L.btn2 + '</a>' +
-      (j[5] ? '<a class="btn btn3" target="_blank" rel="noopener" href="' + j[5] + '">' + L.btn3 + '</a>'
-            : '<span class="btn btn3 off" aria-disabled="true">' + L.btn3off + '</span>') +
-      '</div>';
-    d.querySelector('.nom').textContent = j[0];
-    box.appendChild(d);
-  });
-  document.getElementById('maj').textContent = L.maj;
-</script>
+
+<footer class="pied">
+  <div class="enveloppe pied__in">
+    <img src="images/logo-bylux-96.webp" alt="" width="56" height="56" loading="lazy">
+    <p class="pied__merci" data-t="pied1">Merci, tu nous aides énormément.</p>
+    <p data-t="pied2">Un souci ? Réponds simplement au mail que tu as reçu.</p>
+    <p><a href="../" data-t="pied3">Confidentialité de nos jeux</a></p>
+    <p class="pied__copy">© 2026 Bylux Studio</p>
+  </div>
+</footer>
+
 </body>
 </html>

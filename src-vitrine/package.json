@@ -1,0 +1,19 @@
+{
+  "name": "vitrine-testeurs-bylux",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Vitrine « Devenir testeur Bylux » — build statique dans ../testeurs/",
+  "scripts": {
+    "images": "node outils/images.mjs",
+    "build": "node outils/nettoyer.mjs && vite build",
+    "dev": "vite",
+    "verifier": "node outils/verifier.mjs"
+  },
+  "devDependencies": {
+    "lighthouse": "^13.6.0",
+    "playwright": "^1.65.1",
+    "sharp": "^0.35.5",
+    "vite": "^8.3.8"
+  }
+}
