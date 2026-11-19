@@ -57,6 +57,7 @@
   "altBanniere": "Banner för spelet {nom}",
   "altIcone": "Ikon för spelet {nom}",
   "erreur": "Det gick inte att ladda spellistan. Ladda om sidan om en liten stund.",
+  "reessayer": "Försök igen",
   "faqT": "Vanliga frågor",
   "q1": "Jag är inte testare än, kan jag vara med?",
   "r1": "Ja! Det här är ett slutet test: bara Gmail-adresser på vår lista kan anmäla sig. Skicka din Gmail-adress till personen som delade den här sidan med dig. När den har lagts till kommer du tillbaka hit och följer stegen. Under tiden är knapparna ”Spela på webben” öppna för alla.",

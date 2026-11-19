@@ -57,6 +57,7 @@
   "altBanniere": "Banner hry {nom}",
   "altIcone": "Ikona hry {nom}",
   "erreur": "Seznam her se nepodařilo načíst. Za chvíli stránku obnov.",
+  "reessayer": "Zkusit znovu",
   "faqT": "Časté dotazy",
   "q1": "Ještě nejsem tester, můžu se přidat?",
   "r1": "Jasně! Test je uzavřený: přihlásit se můžou jen adresy Gmail z našeho seznamu. Pošli svou adresu Gmail člověku, který ti tuhle stránku poslal; jakmile ji přidá, vrať se sem a projdi kroky. Mezitím jsou tlačítka „Hrát na webu“ otevřená všem.",

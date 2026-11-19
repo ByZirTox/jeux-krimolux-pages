@@ -57,6 +57,7 @@
   "altBanniere": "Baner gry {nom}",
   "altIcone": "Ikona gry {nom}",
   "erreur": "Nie udało się wczytać listy gier. Odśwież stronę za chwilę.",
+  "reessayer": "Spróbuj ponownie",
   "faqT": "Najczęstsze pytania",
   "q1": "Nie jestem jeszcze testerem, mogę dołączyć?",
   "r1": "Tak! To zamknięte testy: zapisać mogą się tylko adresy Gmail z naszej listy. Wyślij swój adres Gmail osobie, która udostępniła ci tę stronę; gdy zostanie dodany, wróć tutaj i wykonaj kroki. W międzyczasie przyciski „Graj w przeglądarce” są otwarte dla wszystkich.",

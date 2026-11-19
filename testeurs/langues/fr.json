@@ -57,6 +57,7 @@
   "altBanniere": "Bannière du jeu {nom}",
   "altIcone": "Icône du jeu {nom}",
   "erreur": "Impossible de charger la liste des jeux. Recharge la page dans un instant.",
+  "reessayer": "Réessayer",
   "faqT": "Questions fréquentes",
   "q1": "Je ne suis pas encore testeur, je peux participer ?",
   "r1": "Oui ! Le test est fermé : seule une adresse Gmail de notre liste peut s’inscrire. Envoie ton adresse Gmail à la personne qui t’a partagé cette page ; dès qu’elle est ajoutée, reviens ici et suis les étapes. En attendant, les boutons « Jouer sur le web » sont ouverts à tous.",

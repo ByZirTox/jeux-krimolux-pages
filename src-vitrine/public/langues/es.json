@@ -57,6 +57,7 @@
   "altBanniere": "Banner del juego {nom}",
   "altIcone": "Icono del juego {nom}",
   "erreur": "No se pudo cargar la lista de juegos. Recarga la página en un momento.",
+  "reessayer": "Reintentar",
   "faqT": "Preguntas frecuentes",
   "q1": "Aún no soy tester, ¿puedo participar?",
   "r1": "¡Sí! Es una prueba cerrada: solo pueden inscribirse las direcciones Gmail de nuestra lista. Envía tu dirección Gmail a la persona que te compartió esta página; en cuanto la añada, vuelve aquí y sigue los pasos. Mientras tanto, los botones «Jugar en la web» están abiertos a todo el mundo.",

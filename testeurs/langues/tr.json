@@ -57,6 +57,7 @@
   "altBanniere": "{nom} oyun görseli",
   "altIcone": "{nom} oyun simgesi",
   "erreur": "Oyun listesi yüklenemedi. Birazdan sayfayı yenile.",
+  "reessayer": "Tekrar dene",
   "faqT": "Sık sorulan sorular",
   "q1": "Henüz testçi değilim, katılabilir miyim?",
   "r1": "Evet! Bu kapalı bir test: yalnızca listemizdeki Gmail adresleri kaydolabilir. Gmail adresini bu sayfayı seninle paylaşan kişiye gönder; eklenince buraya dön ve adımları izle. Bu arada “Web'de oyna” düğmeleri herkese açık.",
