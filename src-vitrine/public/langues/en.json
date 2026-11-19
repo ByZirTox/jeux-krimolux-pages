@@ -57,6 +57,7 @@
   "altBanniere": "{nom} game banner",
   "altIcone": "{nom} game icon",
   "erreur": "Could not load the game list. Please reload the page in a moment.",
+  "reessayer": "Try again",
   "faqT": "FAQ",
   "q1": "I’m not a tester yet, can I join?",
   "r1": "Yes! This is a closed test: only Gmail addresses on our list can sign up. Send your Gmail address to the person who shared this page; once it’s added, come back and follow the steps. Meanwhile, the “Play on the web” buttons are open to everyone.",

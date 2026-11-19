@@ -57,6 +57,7 @@
   "altBanniere": "{nom} – játékbanner",
   "altIcone": "{nom} – játékikon",
   "erreur": "Nem sikerült betölteni a játéklistát. Kicsit később töltsd újra az oldalt.",
+  "reessayer": "Próbáld újra",
   "faqT": "Gyakori kérdések",
   "q1": "Még nem vagyok tesztelő, csatlakozhatok?",
   "r1": "Igen! Ez zárt teszt: csak a listánkon szereplő Gmail-címekkel lehet jelentkezni. Küldd el a Gmail-címedet annak, aki megosztotta veled ezt az oldalt; amint felkerül, gyere vissza, és kövesd a lépéseket. Addig is a „Játék a weben” gombok mindenki előtt nyitva állnak.",

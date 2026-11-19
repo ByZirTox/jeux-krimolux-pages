@@ -57,6 +57,7 @@
   "altBanniere": "Banner for spillet {nom}",
   "altIcone": "Ikon for spillet {nom}",
   "erreur": "Spillisten kunne ikke indlæses. Genindlæs siden om lidt.",
+  "reessayer": "Prøv igen",
   "faqT": "Ofte stillede spørgsmål",
   "q1": "Jeg er ikke tester endnu, kan jeg være med?",
   "r1": "Ja! Det er en lukket test: kun Gmail-adresser på vores liste kan tilmelde sig. Send din Gmail-adresse til den person, der delte siden med dig. Når den er tilføjet, kommer du tilbage og følger trinnene. Indtil da er knapperne »Spil på nettet« åbne for alle.",

@@ -6,11 +6,13 @@
 <title>Bylux Studio · Become a tester</title>
 <meta name="description" content="Play Bylux Studio's mobile games before anyone else: join the closed test on Google Play.">
 <meta name="robots" content="noindex">
+<!--APERCU-PARTAGE-->
 <meta name="theme-color" content="#0a0518">
 <meta name="color-scheme" content="dark">
 <meta http-equiv="Cache-Control" content="no-cache">
 <link rel="icon" type="image/webp" href="images/logo-bylux-96.webp">
 <link rel="preload" href="images/logo-bylux-96.webp" as="image">
+<link rel="preload" href="fonts/bricolage-800-latin.woff2" as="font" type="font/woff2" crossorigin>
 <script>
   // Langue avant le premier rendu : ?lang=, puis choix mémorisé, puis langues du navigateur, sinon anglais.
   (function () {
@@ -37,6 +39,8 @@
     // Textes et données partent tout de suite, en parallèle (no-cache : toujours revalidés, sans rebuild).
     function json(u) { return fetch(u, { cache: 'no-cache' }).then(function (r) { if (!r.ok) throw r.status; return r.json(); }); }
     window.__jeux = json('jeux.json');
+    // Compteurs relevés automatiquement (facultatif) : s'il existe, compteurs.json remplace les compteurs de jeux.json.
+    window.__compteurs = json('compteurs.json').catch(function () { return null; });
     window.__textes = l === 'en' ? null : json('langues/' + l + '.json');
     window.__jeux.catch(function () {});
     if (window.__textes) window.__textes.catch(function () {});
@@ -65,12 +69,13 @@
 
 <main id="haut">
   <section class="hero">
-    <div class="hero__grille" aria-hidden="true"></div>
+    <!--HERO-IMAGE-->
     <div class="enveloppe hero__in">
       <p class="pastille"><span class="point" aria-hidden="true"></span><span data-t="pastille">Closed test · Google Play</span></p>
       <h1><span data-t="h1a">Play our games</span> <span class="neon" data-t="h1b">before anyone else</span></h1>
       <p class="hero__sous" data-t="sous">Join the Bylux testers: discover our mobile games early and help us launch them on Google Play.</p>
       <a class="btn btn--principal btn--hero" href="#jeux"><span data-t="cta">See the games</span> <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24"><path d="M12 4v14m0 0-6-6m6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <ul class="hero__jeux" id="hero-jeux"></ul>
       <ul class="chiffres">
         <li><b id="nb-jeux">8</b><span data-t="ch1">games in testing</span></li>
         <li><b>12</b><span data-t="ch2">testers per game</span></li>

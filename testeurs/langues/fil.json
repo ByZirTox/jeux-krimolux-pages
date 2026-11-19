@@ -57,6 +57,7 @@
   "altBanniere": "Banner ng larong {nom}",
   "altIcone": "Icon ng larong {nom}",
   "erreur": "Hindi ma-load ang listahan ng mga laro. I-reload ang page maya-maya.",
+  "reessayer": "Subukan ulit",
   "faqT": "Mga madalas itanong",
   "q1": "Hindi pa ako tester, puwede ba akong sumali?",
   "r1": "Oo! Closed test ito: ang mga Gmail address lang na nasa listahan namin ang puwedeng mag-sign up. Ipadala ang Gmail address mo sa taong nag-share ng page na ito; kapag naidagdag na, bumalik dito at sundin ang mga hakbang. Habang naghihintay, bukas sa lahat ang mga button na “Laruin sa web”.",

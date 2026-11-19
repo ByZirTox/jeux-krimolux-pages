@@ -70,22 +70,24 @@ const serveur = createServer(async (req, res) => {
 await new Promise((r) => serveur.listen(4173, '127.0.0.1', r));
 const BASE = 'http://127.0.0.1:4173';
 
-// Liens attendus (inchangés depuis la v1) : nom, paquet, web.
+// Liens attendus (inchangés depuis la v1) : nom, paquet, web, compteur — dans l'ordre d'AFFICHAGE
+// (jeux qui cherchent encore des testeurs d'abord, du plus proche de 12 au plus loin, puis les complets).
+// Compteurs du 17/11 ; à mettre à jour avec jeux.json.
 const ATTENDU = [
+  ['Casino Bylux', 'com.krimolux.casinobylux', 'https://casino.dragonnet.online/', '11/12'],
+  ['Abyss Angler', 'com.krimolux.pecheurabysses', 'https://abyss.dragonnet.online/', '9/12'],
+  ['Last Bastion', 'com.krimolux.dernierbastion', 'https://bastion.dragonnet.online/', '7/12'],
+  ['Évasion Idle', 'com.krimolux.evasionidle', 'https://evasion.dragonnet.online/', '6/12'],
+  ['Moka & Minou', 'com.krimolux.mokaminou', 'https://moka.dragonnet.online/', '6/12'],
+  ['Gunlight', 'com.krimolux.gunlight', 'https://gunlight.dragonnet.online/', '5/12'],
+  ['Village Bazaar', 'com.krimolux.villagebazaar', 'https://bazaar.dragonnet.online/', '5/12'],
   ['Lockdown: Extraction', 'com.byzirtox.lockdown', 'https://lockdown.dragonnet.online/', '12/12'],
-  ['Casino Bylux', 'com.krimolux.casinobylux', 'https://casino.dragonnet.online/', '9/12'],
-  ['Last Bastion', 'com.krimolux.dernierbastion', 'https://bastion.dragonnet.online/', '8/12'],
-  ['Abyss Angler', 'com.krimolux.pecheurabysses', 'https://abyss.dragonnet.online/', '8/12'],
-  ['Évasion Idle', 'com.krimolux.evasionidle', 'https://evasion.dragonnet.online/', '5/12'],
-  ['Moka & Minou', 'com.krimolux.mokaminou', 'https://moka.dragonnet.online/', '3/12'],
-  ['Gunlight', 'com.krimolux.gunlight', 'https://gunlight.dragonnet.online/', '2/12'],
-  ['Village Bazaar', 'com.krimolux.villagebazaar', 'https://bazaar.dragonnet.online/', '1/12'],
 ];
 
 const navigateur = await chromium.launch();
 
 /** Ouvre la page ; options : groupe (URL injectée dans jeux.json), lang (?lang=), locale du navigateur. */
-async function ouvrir({ l, h, locale = 'en-US', lang = null, groupe = null, stockage = null }) {
+async function ouvrir({ l, h, locale = 'en-US', lang = null, groupe = null, stockage = null, compteurs = null }) {
   const mobile = l < 800;
   // Échelle 1 : même mise en page qu'en 2×, mais captures pleine page 4× plus légères (machine partagée).
   const ctx = await navigateur.newContext({ viewport: { width: l, height: h }, deviceScaleFactor: 1, isMobile: mobile, hasTouch: mobile, locale });
@@ -93,7 +95,8 @@ async function ouvrir({ l, h, locale = 'en-US', lang = null, groupe = null, stoc
   const page = await ctx.newPage();
   const erreurs = [];
   const tiers = [];
-  page.on('console', (m) => { if (m.type() === 'error' || m.type() === 'warning') erreurs.push(`${m.type()}: ${m.text()}`); });
+  // compteurs.json est facultatif (relève automatique à venir) : son 404 n'est pas une erreur.
+  page.on('console', (m) => { if ((m.type() === 'error' || m.type() === 'warning') && !(m.location()?.url || '').endsWith('/compteurs.json')) erreurs.push(`${m.type()}: ${m.text()}`); });
   page.on('pageerror', (e) => erreurs.push('pageerror: ' + e.message));
   page.on('requestfailed', (r) => erreurs.push('requête échouée: ' + r.url()));
   page.on('request', (r) => { if (!r.url().startsWith(BASE) && !r.url().startsWith('data:')) tiers.push(r.url()); });
@@ -104,6 +107,9 @@ async function ouvrir({ l, h, locale = 'en-US', lang = null, groupe = null, stoc
       d.groupe = groupe;
       await r.fulfill({ contentType: 'application/json', body: JSON.stringify(d) });
     });
+  }
+  if (compteurs !== null) {
+    await page.route('**/compteurs.json', (r) => r.fulfill({ contentType: 'application/json', body: JSON.stringify(compteurs) }));
   }
   if (stockage) await ctx.addInitScript((s) => { for (const [k, v] of Object.entries(s)) localStorage.setItem(k, v); }, stockage);
   await page.goto(`${BASE}/testeurs/?m=test123${lang ? '&lang=' + lang : ''}`, { waitUntil: 'networkidle' });
@@ -128,8 +134,11 @@ async function mesurer(page) {
     const petits = [...document.querySelectorAll('a, button, summary, select, .btn')].filter((e) => { const r = e.getBoundingClientRect(); return r.width && !e.closest('.saut') && (r.height < 47.5 || r.width < 47.5); }).map((e) => (e.textContent || '').trim().slice(0, 30));
     const cartes = [...document.querySelectorAll('#cartes .carte')].map((c) => ({
       nom: c.querySelector('.carte__nom').textContent,
-      inscription: c.querySelector('.btn--principal')?.href,
-      play: c.querySelector('.btn--contour')?.href,
+      inscription: c.querySelector('a[data-etape="testeur"]')?.href,
+      play: c.querySelector('a[data-etape="installe"]')?.href,
+      principal: c.querySelector('.btn--principal')?.dataset.etape,
+      complet: c.classList.contains('carte--complet'),
+      une: c.classList.contains('carte--une'),
       web: c.querySelector('.btn--web')?.href || null,
       compteur: c.querySelector('.compteur__nb b').textContent,
       jauge: c.querySelector('.jauge').getAttribute('aria-valuenow'),
@@ -196,17 +205,38 @@ for (const [locale, suffixe] of [['fr-FR', 'fr'], ['en-US', 'en']]) {
       if (c.play !== `https://play.google.com/store/apps/details?id=${pkg}`) ko(`${n} : lien Play ${c.play}`);
       if (c.web !== web) ko(`${n} : lien web ${c.web}`);
       if (c.compteur !== cpt) ko(`${n} : compteur ${c.compteur} au lieu de ${cpt}`);
+      const complet = cpt === '12/12';
+      if (c.complet !== complet || c.principal !== (complet ? 'installe' : 'testeur')) ko(`${n} : complet=${c.complet}, bouton plein=${c.principal}`);
+      if (c.une !== (i === 0)) ko(`${n} : mise en avant ${c.une}`);
     });
     const dn = res.prod[0];
     if (!dn || dn.nom !== 'Dragonnet' || dn.play !== 'https://play.google.com/store/apps/details?id=com.krimolux.dragonnet' || dn.web !== 'https://dragonnet.online/' || dn.compteur) ko(`carte production Dragonnet incorrecte : ${JSON.stringify(dn)}`);
     if (!res.prodAvant) ko('la section « en production » n’est pas au-dessus des jeux en test');
-    if (res.etapes.join() !== 'testeur:1,installe:2,avis:3') ko(`étapes sans groupe : ${res.etapes.join()}`);
+    // jeux.json a un lien de groupe depuis le 15/11 → 4 étapes ; sans lien → 3.
+    const etapesAttendues = /^https:\/\//.test(jeuxJson.groupe || '') ? 'groupe:1,testeur:2,installe:3,avis:4' : 'testeur:1,installe:2,avis:3';
+    if (res.etapes.join() !== etapesAttendues) ko(`étapes : ${res.etapes.join()} au lieu de ${etapesAttendues}`);
     if (!echecs) ok(`liens, compteurs, production, 3 étapes (${res.progres}) · ${res.maj}`);
     const nom = `vitrine-${l}x${h}-${suffixe}`;
     await page.screenshot({ path: join(SORTIE, `${nom}.png`), fullPage: true });
     await page.screenshot({ path: join(SORTIE, `${nom}-ecran.png`) });
     await ctx.close();
   }
+}
+
+/* --- 2a bis. compteurs.json (relève automatique) remplace les compteurs de jeux.json et retrie --- */
+console.log('\ncompteurs.json');
+{
+  const maj = new Date(Date.now() - 864e5).toISOString().slice(0, 10);
+  const c = { maj, testeurs: { 'com.krimolux.villagebazaar': 12, 'com.krimolux.gunlight': 10, 'com.krimolux.casinobylux': 'x', 'com.byzirtox.lockdown': 999 } };
+  const { ctx, page, erreurs } = await ouvrir({ l: 390, h: 844, locale: 'fr-FR', compteurs: c });
+  const res = await mesurer(page);
+  const ordre = res.cartes.map((x) => `${x.nom} ${x.compteur}`).join(', ');
+  const attendu = 'Casino Bylux 11/12, Gunlight 10/12, Abyss Angler 9/12, Last Bastion 7/12, Évasion Idle 6/12, Moka & Minou 6/12, Lockdown: Extraction 12/12, Village Bazaar 12/12';
+  if (ordre !== attendu) ko(`ordre avec compteurs.json : ${ordre}`);
+  if (!res.maj) ko('date de compteurs.json non affichée');
+  if (erreurs.length) ko('console : ' + erreurs.join(' | '));
+  if (!echecs) ok(`compteurs.json fusionné et retrié (valeurs invalides ignorées) · ${res.maj}`);
+  await ctx.close();
 }
 
 /* --- 2b. Parcours : groupe renseigné → 4 étapes ; coches mémorisées ; boutons des cartes --- */
