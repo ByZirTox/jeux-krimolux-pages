@@ -1,5 +1,5 @@
 {
-  "maj": "2026-11-22T16:28",
+  "maj": "2026-11-22T19:42",
   "testeurs": {
     "com.krimolux.casinobylux": 12,
     "com.krimolux.dernierbastion": 8,
@@ -9,6 +9,6 @@
     "com.krimolux.gunlight": 6,
     "com.krimolux.villagebazaar": 6,
     "com.byzirtox.lockdown": 12,
-    "com.krimolux.tetesvives": 0
+    "com.krimolux.tetesvives": 7
   }
 }
